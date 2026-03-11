@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Soft light theme ────────────────────────────────────────────── */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d8dee9 transparent;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d8dee9; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #b0b8c4; }
+
+/* React Flow overrides for light theme */
+.react-flow__background { background: #f0f3f8 !important; }
+.react-flow__minimap { background: #f7f9fc !important; border-radius: 8px; border: 1px solid #d8dee9 !important; }
+.react-flow__controls { background: #ffffff !important; border-radius: 8px; border: 1px solid #d8dee9 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important; }
+.react-flow__controls button { background: #ffffff !important; border-color: #e8ecf1 !important; color: #6b7280 !important; }
+.react-flow__controls button:hover { background: #f7f9fc !important; color: #1f2937 !important; }
+.react-flow__controls button svg { fill: currentColor !important; }
+.react-flow__attribution { display: none; }
+
+/* Subtle pulse for animations */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Custom focus rings */
+input:focus, select:focus, button:focus-visible {
+  outline: 2px solid #4f6df5;
+  outline-offset: 1px;
+}
