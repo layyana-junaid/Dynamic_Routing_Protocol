@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Server, Cpu, Globe } from 'lucide-react';
+import { Server, Cpu, Activity, ShieldCheck, Zap } from 'lucide-react';
 import useSimulationStore from '../../store/simulationStore';
 import useSimulation from '../../hooks/useSimulation';
 import RoutingTable from './RoutingTable';
@@ -29,64 +29,95 @@ export default function RouterDetail() {
 
   if (!router) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-text-muted text-xs gap-2">
-        <Server size={28} />
-        <span>Click a router to inspect</span>
+      <div className="flex flex-col items-center justify-center h-full text-text-tertiary text-[10px] gap-3 uppercase tracking-[0.2em] animate-pulse">
+        <Activity size={32} className="opacity-20" />
+        <span>Awaiting Input...</span>
       </div>
     );
   }
 
+  const isUp = router.status === 'active';
+
   return (
-    <div className="flex flex-col gap-4 p-4">
-      {/* Router header */}
-      <div className="flex items-center gap-3">
+    <div className="flex flex-col gap-6">
+      {/* Router Header */}
+      <div className="flex items-center gap-4">
         <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center"
-          style={{ backgroundColor: color + '12' }}
+          className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 shadow-inner transition-all duration-500 animate-neon"
+          style={{ 
+            backgroundColor: color + '08', 
+            borderColor: color + '40',
+            '--glow-color': color 
+          }}
         >
-          <Cpu size={18} style={{ color }} />
+          {isUp ? <Cpu size={22} style={{ color }} /> : <Zap size={22} className="text-accent-warning" />}
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-text-primary">
+          <h3 className="text-sm font-bold text-text-primary tracking-widest uppercase">
             {router.label}
           </h3>
-          <p className="text-[11px] text-text-tertiary font-mono">{router.ip}</p>
+          <p className="text-[10px] text-accent-primary font-mono bg-accent-primary/10 px-2 py-0.5 rounded-full inline-block mt-1">
+            {router.ip}
+          </p>
         </div>
       </div>
 
-      {/* Info grid */}
-      <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs bg-surface-card border border-surface-border rounded-xl p-3">
-        <span className="text-text-tertiary">ID</span>
-        <span className="text-text-primary font-mono">{router.id}</span>
-        <span className="text-text-tertiary">Status</span>
-        <span className="flex items-center gap-1.5">
+      {/* Real-time Diagnostics */}
+      <div className="grid grid-cols-2 gap-3">
+        <MetricCard icon={<Activity size={12} />} label="CONVERGED" value={isUp ? "TRUE" : "FALSE"} color={isUp ? "#00ff9f" : "#ff006e"} />
+        <MetricCard icon={<ShieldCheck size={12} />} label="SECURITY" value="ACTIVE" color="#00d2ff" />
+      </div>
+
+      {/* Info Grid */}
+      <div className="grid grid-cols-2 gap-y-3 bg-surface-base/30 border border-surface-border-light/50 rounded-2xl p-4 text-[10px] font-mono">
+        <span className="text-text-tertiary uppercase tracking-tighter">System ID</span>
+        <span className="text-text-primary text-right uppercase">{router.id}</span>
+        
+        <span className="text-text-tertiary uppercase tracking-tighter">Status</span>
+        <span className="flex items-center justify-end gap-2">
           <span
-            className="w-2 h-2 rounded-full"
-            style={{
-              backgroundColor:
-                router.status === 'active' ? '#22c55e' : '#ef4444',
-            }}
+            className="w-1.5 h-1.5 rounded-full animate-pulse"
+            style={{ backgroundColor: isUp ? '#00ff9f' : '#ff006e' }}
           />
-          <span className="text-text-primary capitalize">{router.status}</span>
+          <span className="text-text-primary uppercase">{router.status}</span>
         </span>
+
         {router.as_number != null && (
           <>
-            <span className="text-text-tertiary">AS Number</span>
-            <span className="text-text-primary">{router.as_number}</span>
+            <span className="text-text-tertiary uppercase tracking-tighter">Domain AS</span>
+            <span className="text-text-primary text-right">{router.as_number}</span>
           </>
         )}
-        <span className="text-text-tertiary">Protocol</span>
-        <span style={{ color }} className="font-medium">
+        
+        <span className="text-text-tertiary uppercase tracking-tighter">Protocol</span>
+        <span style={{ color }} className="font-bold text-right uppercase text-glow">
           {selectedProtocol}
         </span>
       </div>
 
-      {/* Routing table */}
-      <div>
-        <h4 className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2">
-          Routing Table
+      {/* Routing Table Section */}
+      <div className="flex-1 min-h-0 flex flex-col">
+        <h4 className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
+          <div className="w-1 h-1 bg-accent-primary" />
+          FIB (Forwarding Information Base)
         </h4>
-        <RoutingTable entries={entries} protocol={selectedProtocol} />
+        <div className="flex-1 overflow-y-auto custom-scrollbar pr-1">
+           <RoutingTable entries={entries} protocol={selectedProtocol} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MetricCard({ icon, label, value, color }) {
+  return (
+    <div className="bg-surface-base/30 border border-surface-border-light/50 rounded-xl p-2 flex flex-col gap-1">
+      <div className="flex items-center gap-1.5 text-[8px] text-text-tertiary uppercase font-bold tracking-tighter">
+        <span style={{ color }}>{icon}</span>
+        {label}
+      </div>
+      <div className="text-[11px] font-bold tracking-widest uppercase" style={{ color }}>
+        {value}
       </div>
     </div>
   );

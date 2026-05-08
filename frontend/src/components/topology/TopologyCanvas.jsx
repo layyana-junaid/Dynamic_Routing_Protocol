@@ -86,24 +86,21 @@ function TopologyFlow() {
         onNodeClick={onNodeClick}
         onPaneClick={onPaneClick}
         fitView
-        fitViewOptions={{ padding: 0.3 }}
-        minZoom={0.3}
-        maxZoom={2}
+        fitViewOptions={{ padding: 0.5 }}
+        minZoom={0.2}
+        maxZoom={1.5}
         defaultEdgeOptions={{ type: 'animatedEdge' }}
         proOptions={{ hideAttribution: true }}
       >
-        <Background color="#dce2eb" gap={24} size={1} />
+        <Background variant="dots" gap={40} size={1} color="rgba(0, 210, 255, 0.1)" />
         <Controls
           showInteractive={false}
-          className="!bottom-3 !left-3"
+          className="!bottom-4 !left-4"
         />
         <MiniMap
-          nodeColor={(n) =>
-            n.data?.selected ? protocolColor : '#b0b8c4'
-          }
-          maskColor="rgba(238, 242, 246, 0.7)"
-          className="!bottom-3 !right-3"
-          style={{ width: 120, height: 80 }}
+          nodeColor={(n) => n.data?.selected ? protocolColor : '#1f2937'}
+          className="!bottom-4 !right-4"
+          style={{ width: 140, height: 90 }}
         />
       </ReactFlow>
 
