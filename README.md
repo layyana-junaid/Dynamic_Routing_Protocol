@@ -1,6 +1,6 @@
 # Dynamic Routing Protocol Simulator
 
-A full stack, university level application that simulates and visualises **RIP**, **OSPF**, **EIGRP**, and **BGP** routing protocol behaviour on configurable network topologies.
+A full stack application that simulates and visualises **RIP**, **OSPF**, **EIGRP**, and **BGP** routing protocol behaviour on configurable network topologies.
 
 Built for a Computer Networks course project.
 
