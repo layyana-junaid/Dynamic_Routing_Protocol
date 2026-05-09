@@ -14,6 +14,7 @@ back to its built-in academic simulation engine, so the project remains
 fully demo-able without a running GNS3 server.
 """
 
+import random
 import httpx
 from typing import Optional, Dict, List, Any
 from config import settings
@@ -219,12 +220,15 @@ class GNS3Client:
         routers = []
         node_map: Dict[str, str] = {}
         for i, n in enumerate(nodes):
-            rid = f"R{i + 1}"
+            # Use the GNS3 name as the ID if it's like "R1", "Router1", etc.
+            name = n.get("name", f"R{i+1}")
+            rid = name if name.isalnum() and len(name) < 10 else f"R{i+1}"
+            
             node_map[n["node_id"]] = rid
             routers.append(
                 {
                     "id": rid,
-                    "label": n.get("name", rid),
+                    "label": name,
                     "ip": f"10.0.{i + 1}.1",
                     "position": {"x": n.get("x", i * 200), "y": n.get("y", 200)},
                     "status": "active",
@@ -244,7 +248,7 @@ class GNS3Client:
                         "id": f"L{j + 1}",
                         "source": src,
                         "target": tgt,
-                        "cost": 10,
+                        "cost": self._get_smart_cost(src, tgt),
                         "bandwidth": 100,
                         "delay": 1.0,
                         "status": "up",
@@ -259,3 +263,11 @@ class GNS3Client:
             "routers": routers,
             "links": topo_links,
         }
+
+    def _get_smart_cost(self, src: str, tgt: str) -> int:
+        """Assign specific costs for the 'Triangle Demo' if names match R1, R2, R3."""
+        pair = {src, tgt}
+        if pair == {"R1", "R2"}: return 5
+        if pair == {"R2", "R3"}: return 5
+        if pair == {"R1", "R3"}: return 100
+        return random.choice([10, 20, 30, 40, 50])

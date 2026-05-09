@@ -141,7 +141,7 @@ export default function App() {
 
           {/* Bottom panel */}
           <div
-            style={{ flexShrink:0, height:220, zIndex:2, position:'relative', borderTop:'1px solid var(--border-col)' }}
+            style={{ flexShrink:0, height:'auto', zIndex:2, position:'relative', borderTop:'1px solid var(--border-col)' }}
             className="panel"
           >
             <div className="panel-header">

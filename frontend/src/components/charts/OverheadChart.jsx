@@ -41,12 +41,14 @@ export default function OverheadChart() {
             />
             <Tooltip
               contentStyle={{
-                background: '#ffffff',
-                border: '1px solid #d8dee9',
+                background: 'rgba(13, 11, 30, 0.98)',
+                border: `1px solid ${color}88`,
                 borderRadius: 8,
-                fontSize: 11,
+                fontSize: 10,
+                boxShadow: `0 0 15px ${color}22`,
               }}
-              labelStyle={{ color: '#1f2937' }}
+              itemStyle={{ color: color, fontWeight: 'bold' }}
+              labelStyle={{ color: '#9d8ec4', marginBottom: 4, fontSize: 9 }}
             />
             <Bar
               dataKey="messages"

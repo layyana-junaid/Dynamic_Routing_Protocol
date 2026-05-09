@@ -23,7 +23,7 @@ export default function BottomPanel() {
     <div
       className={clsx(
         'border-t border-surface-border bg-surface-panel flex flex-col transition-all duration-300',
-        collapsed ? 'h-9' : 'h-56'
+        collapsed ? 'h-9' : 'h-80'
       )}
     >
       {/* Tab bar */}

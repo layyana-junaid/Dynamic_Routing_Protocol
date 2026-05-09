@@ -48,12 +48,14 @@ export default function ConvergenceChart() {
             />
             <Tooltip
               contentStyle={{
-                background: '#ffffff',
-                border: '1px solid #d8dee9',
+                background: 'rgba(13, 11, 30, 0.98)',
+                border: '1px solid rgba(124, 58, 237, 0.5)',
                 borderRadius: 8,
-                fontSize: 11,
+                fontSize: 10,
+                boxShadow: '0 0 15px rgba(124, 58, 237, 0.2)',
               }}
-              labelStyle={{ color: '#1f2937' }}
+              itemStyle={{ color: color, fontWeight: 'bold' }}
+              labelStyle={{ color: '#9d8ec4', marginBottom: 4, fontSize: 9 }}
             />
             <Area
               type="monotone"
