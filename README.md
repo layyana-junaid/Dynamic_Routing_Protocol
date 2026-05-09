@@ -31,7 +31,7 @@ Built for a Computer Networks course project.
 |-------|-----------|---------------|
 | **Frontend** | React 18, React Flow, Framer Motion, Recharts, Tailwind CSS | Topology visualisation, protocol animations, routing tables, metrics charts, comparison dashboard |
 | **Backend** | Python, FastAPI, WebSockets | REST API, WebSocket event streaming, simulation orchestration, protocol simulation modules |
-| **Emulation** | GNS3 (optional) | Network topology emulation via GNS3 REST API; falls back to built-in simulation when GNS3 is unavailable |
+| **Emulation** | GNS3 | Network topology emulation via GNS3 REST API; falls back to built in simulation when GNS3 is unavailable |
 
 ### GNS3 Integration Approach
 
@@ -49,7 +49,7 @@ GNS3 is integrated as the **emulation layer** via its REST API (`/v2/`):
 | Topology definition | Real (sample topologies + GNS3 import) |
 | Protocol routing logic | Academic simulation (correct algorithm modelling) |
 | LSA/update packet animation | Simulated events via WebSocket |
-| Routing table computation | Real algorithms (Bellman-Ford, Dijkstra, DUAL, path-vector) |
+| Routing table computation | Real algorithms (Bellman-Ford, Dijkstra, DUAL, path vector) |
 | Link failure/recovery | Fully working in simulation engine |
 | Metrics (convergence, loss, overhead) | Measured from simulation |
 | GNS3 topology sync | Real GNS3 API integration |
@@ -62,27 +62,27 @@ This hybrid approach is **presentation-worthy** and **technically sound** for a 
 ## Protocols Implemented
 
 ### RIP (Routing Information Protocol)
-- Distance-vector, Bellman-Ford algorithm
+- Distance vector, Bellman Ford algorithm
 - Hop count metric (max 15, 16 = infinity)
-- Periodic updates, split-horizon, triggered updates
+- Periodic updates, split horizon, triggered updates
 - Slow convergence demonstrated
 
 ### OSPF (Open Shortest Path First)
 - Link-state, Dijkstra's SPF algorithm
 - Cost metric (reference BW / link BW)
-- LSA flooding simulation (hop-by-hop)
+- LSA flooding simulation (hop by hop)
 - Fast convergence after link failure
 
 ### EIGRP (Enhanced Interior Gateway Routing Protocol)
-- Advanced distance-vector, DUAL algorithm
+- Advanced distance vector, DUAL algorithm
 - Composite metric (bandwidth + delay)
-- Successor / feasible-successor selection
+- Successor / feasible successor selection
 - Active queries on successor loss
 
 ### BGP (Border Gateway Protocol)
-- Path-vector, inter-AS routing
+- Path vector, inter AS routing
 - AS_PATH attribute, loop detection
-- Best-path selection (LOCAL_PREF, AS_PATH length, MED)
+- Best path selection (LOCAL_PREF, AS_PATH length, MED)
 - Route advertisement and withdrawal
 
 ---
@@ -182,7 +182,7 @@ CN_Project/
 ### Prerequisites
 - **Python 3.10+**
 - **Node.js 18+** and npm
-- **GNS3** (optional — for emulation layer demo)
+- **GNS3** 
 
 ### Backend Setup
 
@@ -242,31 +242,31 @@ The frontend Vite dev server proxies `/api` and `/ws` requests to the backend au
 ## Demo Walkthrough
 
 ### Scenario 1: RIP Route Propagation
-1. Select the **Small 4-Router Ring** topology from the sidebar
+1. Select the **Small 4 Router Ring** topology from the sidebar
 2. Choose **RIP** protocol from the header
-3. Click **Start** (▶) — watch periodic RIP Update packets animate between routers
-4. Click any router to see its routing table fill with hop-count routes
+3. Click **Start** (▶) watch periodic RIP Update packets animate between routers
+4. Click any router to see its routing table fill with hop count routes
 5. Observe the Event Log for route add/update events
 6. Wait for convergence (status badge turns blue, timer shown)
 
 ### Scenario 2: OSPF Link Failure Recovery
 1. Load the **Medium 6-Router Mesh** topology
-2. Select **OSPF** — start the simulation
+2. Select **OSPF** start the simulation
 3. Once converged, go to **Failure Simulation** in the sidebar
 4. Select link **R1 — R2** and click **Fail**
 5. Watch LSA flooding animations as routers detect the failure
 6. Observe routing tables update with new shortest paths via alternative routes
-7. Click **Restore** to bring the link back — watch reconvergence
+7. Click **Restore** to bring the link back watch reconvergence
 
 ### Scenario 3: EIGRP Feasible Successor
 1. On the same mesh topology, switch to **EIGRP**
 2. Start and wait for convergence
-3. Fail a link — if a feasible successor exists, watch instant route switch
+3. Fail a link if a feasible successor exists, watch instant route switch
 4. If no feasible successor, observe EIGRP Query packets (red) as the router goes Active
 
 ### Scenario 4: BGP Multi-AS
 1. Load the **BGP 3-AS Topology**
-2. Select **BGP** — start the simulation
+2. Select **BGP** start the simulation
 3. Watch BGP UPDATE messages propagate between autonomous systems
 4. Note the AS_PATH attribute in routing tables
 5. Fail an eBGP link — observe route withdrawals and re-advertisements
@@ -275,7 +275,7 @@ The frontend Vite dev server proxies `/api` and `/ws` requests to the backend au
 1. Load any topology
 2. In the sidebar, click **Run All-Protocol Comparison**
 3. Switch to the **Comparison** tab in the bottom panel
-4. View the side-by-side table and bar charts comparing convergence time, control messages, packet loss, and overhead for all four protocols
+4. View the side by side table and bar charts comparing convergence time, control messages, packet loss, and overhead for all four protocols
 
 ---
 
@@ -283,9 +283,9 @@ The frontend Vite dev server proxies `/api` and `/ws` requests to the backend au
 
 | ID | Name | Routers | Links | Best For |
 |----|------|---------|-------|----------|
-| `small_4` | Small 4-Router Ring | 4 | 5 | RIP demo, simple ring |
-| `medium_6` | Medium 6-Router Mesh | 6 | 8 | OSPF, EIGRP, general demo |
-| `bgp_3as` | BGP 3-AS Topology | 6 | 7 | BGP inter-AS routing |
+| `small_4` | Small 4 Router Ring | 4 | 5 | RIP demo, simple ring |
+| `medium_6` | Medium 6 Router Mesh | 6 | 8 | OSPF, EIGRP, general demo |
+| `bgp_3as` | BGP 3 AS Topology | 6 | 7 | BGP inter-AS routing |
 
 ---
 
@@ -322,7 +322,7 @@ The frontend Vite dev server proxies `/api` and `/ws` requests to the backend au
 | Component | Technology |
 |-----------|-----------|
 | Backend framework | FastAPI (Python) |
-| Real-time updates | WebSockets |
+| Real time updates | WebSockets |
 | Network emulation | GNS3 REST API |
 | Frontend framework | React 18 |
 | Graph visualisation | React Flow |
@@ -337,4 +337,4 @@ The frontend Vite dev server proxies `/api` and `/ws` requests to the backend au
 
 ## License
 
-University project — for educational purposes only.
+University project: for educational purposes only.
