@@ -40,7 +40,7 @@ GNS3 is integrated as the **emulation layer** via its REST API (`/v2/`):
 - The `GNS3Client` class (`backend/services/gns3_client.py`) communicates with a local GNS3 server
 - It can create projects, nodes, links, and sync topology state
 - If `GNS3_ENABLED=true` and a GNS3 server is reachable, the app imports topology from GNS3
-- **If GNS3 is not running**, the app functions fully using the built-in simulation engine with sample topologies
+- **If GNS3 is not running**, the app functions fully using the built in simulation engine with sample topologies
 
 **What is truly implemented vs abstracted:**
 
@@ -269,7 +269,7 @@ The frontend Vite dev server proxies `/api` and `/ws` requests to the backend au
 2. Select **BGP** start the simulation
 3. Watch BGP UPDATE messages propagate between autonomous systems
 4. Note the AS_PATH attribute in routing tables
-5. Fail an eBGP link — observe route withdrawals and re-advertisements
+5. Fail an eBGP link observe route withdrawals and re-advertisements
 
 ### Scenario 5: Protocol Comparison
 1. Load any topology
