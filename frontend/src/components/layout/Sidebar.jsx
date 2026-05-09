@@ -123,7 +123,7 @@ export default function Sidebar() {
           onClick={() => runComparison(null)}
           className="btn-primary w-full text-[10px] font-bold tracking-widest uppercase py-3 shadow-glow-blue"
         >
-          Execute All-Protocol Analysis
+          Execute All Protocol Analysis
         </button>
         <p className="text-[9px] text-text-tertiary mt-3 leading-relaxed font-mono px-1">
           Simulates RIP, OSPF, EIGRP, and BGP concurrently to measure convergence delta.

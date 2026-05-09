@@ -8,8 +8,8 @@ TOPOLOGIES = [
     # ── 1. Small 4-Router topology (good for RIP demo) ────────────────
     {
         "id": "small_4",
-        "name": "Small 4-Router Ring",
-        "description": "Simple ring topology — ideal for RIP distance-vector demonstration",
+        "name": "Small 4 Router Ring",
+        "description": "Simple ring topology  ideal for RIP distance vector demonstration",
         "routers": [
             {"id": "R1", "label": "Router 1", "ip": "10.0.1.1", "position": {"x": 200, "y": 80}, "status": "active"},
             {"id": "R2", "label": "Router 2", "ip": "10.0.2.1", "position": {"x": 500, "y": 80}, "status": "active"},
@@ -27,8 +27,8 @@ TOPOLOGIES = [
     # ── 2. Medium 6-Router mesh (OSPF / EIGRP demo) ──────────────────
     {
         "id": "medium_6",
-        "name": "Medium 6-Router Mesh",
-        "description": "Mesh topology with multiple paths — best for OSPF and EIGRP demonstrations",
+        "name": "Medium 6 Router Mesh",
+        "description": "Mesh topology with multiple paths  best for OSPF and EIGRP demonstrations",
         "routers": [
             {"id": "R1", "label": "Router 1", "ip": "10.0.1.1", "position": {"x": 250, "y": 60},  "status": "active"},
             {"id": "R2", "label": "Router 2", "ip": "10.0.2.1", "position": {"x": 550, "y": 60},  "status": "active"},
@@ -51,8 +51,8 @@ TOPOLOGIES = [
     # ── 3. BGP multi-AS topology (3 autonomous systems) ───────────────
     {
         "id": "bgp_3as",
-        "name": "BGP 3-AS Topology",
-        "description": "Three autonomous systems with eBGP peering — for BGP path-vector demonstration",
+        "name": "BGP 3 AS Topology",
+        "description": "Three autonomous systems with eBGP peering  for BGP path vector demonstration",
         "routers": [
             {"id": "R1", "label": "AS100-R1", "ip": "10.100.1.1", "position": {"x": 150, "y": 100}, "as_number": 100, "status": "active"},
             {"id": "R2", "label": "AS100-R2", "ip": "10.100.2.1", "position": {"x": 400, "y": 100}, "as_number": 100, "status": "active"},

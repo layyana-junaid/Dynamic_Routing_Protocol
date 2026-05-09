@@ -20,6 +20,20 @@ export default {
           yellow:  '#ffea00',
           orange:  '#ff6d00',
         },
+        surface: {
+          base:    '#00000a',
+          card:    '#05040f',
+          panel:   '#0d0b1e',
+          hover:   '#16132d',
+          border:  'rgba(124,58,237,0.25)',
+          'border-light': 'rgba(124,58,237,0.15)',
+        },
+        text: {
+          primary:   '#e2d9f3',
+          secondary: '#9d8ec4',
+          tertiary:  '#4a3f6b',
+          muted:     '#211d3f',
+        },
         ink: {
           DEFAULT: '#e2d9f3',
           dim:     '#9d8ec4',

@@ -18,7 +18,7 @@ export const PROTOCOL_INFO = {
     type: 'Distance Vector',
     metric: 'Hop Count',
     color: '#22c55e',
-    description: 'Simple distance-vector protocol using hop count as metric (max 15 hops).',
+    description: 'Simple distance vector protocol using hop count as metric (max 15 hops).',
   },
   OSPF: {
     name: 'OSPF',
@@ -26,7 +26,7 @@ export const PROTOCOL_INFO = {
     type: 'Link State',
     metric: 'Cost (BW)',
     color: '#3b82f6',
-    description: 'Link-state protocol using Dijkstra\'s SPF algorithm with cost metric.',
+    description: 'Link state protocol using Dijkstra\'s SPF algorithm with cost metric.',
   },
   EIGRP: {
     name: 'EIGRP',
@@ -42,7 +42,7 @@ export const PROTOCOL_INFO = {
     type: 'Path Vector',
     metric: 'AS Path Length',
     color: '#a855f7',
-    description: 'Path-vector inter-AS protocol using AS_PATH for loop prevention.',
+    description: 'Path vector inter AS protocol using AS PATH for loop prevention.',
   },
 };
 

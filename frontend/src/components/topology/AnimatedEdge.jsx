@@ -58,16 +58,16 @@ function AnimatedEdge({
       {/* Cost badge */}
       {cost != null && (
         <foreignObject
-          x={labelX - 14}
-          y={labelY - 10}
-          width={28}
-          height={20}
+          x={labelX - 18}
+          y={labelY - 12}
+          width={36}
+          height={24}
           className="pointer-events-none"
         >
           <div className="flex items-center justify-center w-full h-full">
             <span
-              className="text-[10px] font-mono px-1 rounded-md bg-surface-card/90 text-text-secondary shadow-soft"
-              style={isDown ? { color: '#ef4444', textDecoration: 'line-through' } : undefined}
+              className="text-[13px] font-bold font-mono px-2 py-0.5 rounded-md bg-[#16132d] border border-[#7c3aed44] text-[#00e5ff] shadow-[0_0_10px_rgba(0,229,255,0.2)]"
+              style={isDown ? { color: '#ef4444', textDecoration: 'line-through', borderColor: '#ef4444' } : undefined}
             >
               {cost}
             </span>
