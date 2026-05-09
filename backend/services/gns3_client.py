@@ -29,7 +29,10 @@ class GNS3Client:
 
     async def _http(self) -> httpx.AsyncClient:
         if self._client is None or self._client.is_closed:
-            self._client = httpx.AsyncClient(timeout=10.0)
+            auth = None
+            if settings.gns3_user and settings.gns3_password:
+                auth = (settings.gns3_user, settings.gns3_password)
+            self._client = httpx.AsyncClient(timeout=10.0, auth=auth)
         return self._client
 
     async def close(self):
