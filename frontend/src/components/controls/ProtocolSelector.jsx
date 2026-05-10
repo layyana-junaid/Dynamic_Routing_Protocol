@@ -1,3 +1,4 @@
+import { GitCompare } from 'lucide-react';
 import useSimulation from '../../hooks/useSimulation';
 import useSimulationStore from '../../store/simulationStore';
 import { PROTOCOLS, PROTOCOL_COLORS } from '../../utils/constants';
@@ -7,7 +8,7 @@ import { PROTOCOLS, PROTOCOL_COLORS } from '../../utils/constants';
  */
 export default function ProtocolSelector() {
   const selected = useSimulationStore((s) => s.selectedProtocol);
-  const { changeProtocol } = useSimulation();
+  const { changeProtocol, runComparison } = useSimulation();
 
   return (
     <div style={{ display:'flex', alignItems:'center', gap:4, background:'rgba(124,58,237,0.08)', border:'1px solid rgba(124,58,237,0.2)', padding:'3px' }}>
@@ -37,6 +38,40 @@ export default function ProtocolSelector() {
           </button>
         );
       })}
+
+      <div style={{ width: 1, height: 16, background: 'rgba(124,58,237,0.2)', margin: '0 4px' }} />
+
+      <button
+        onClick={() => runComparison(null)}
+        title="Run Multi-Protocol Comparison"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          padding: '5px 12px',
+          background: 'rgba(0, 229, 255, 0.1)',
+          border: '1px solid rgba(0, 229, 255, 0.3)',
+          color: '#00e5ff',
+          cursor: 'pointer',
+          fontFamily: 'Space Mono, monospace',
+          fontSize: 9,
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          transition: 'all 0.2s',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(0, 229, 255, 0.2)';
+          e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 229, 255, 0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(0, 229, 255, 0.1)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+      >
+        <GitCompare size={12} />
+        Compare All
+      </button>
     </div>
   );
 }

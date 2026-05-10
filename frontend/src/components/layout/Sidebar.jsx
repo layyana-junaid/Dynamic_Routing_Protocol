@@ -121,7 +121,7 @@ export default function Sidebar() {
       <SidebarSection icon={<BarChart3 size={16} />} title="Comparative Analysis">
         <button
           onClick={() => runComparison(null)}
-          className="btn-primary w-full text-[10px] font-bold tracking-widest uppercase py-3 shadow-glow-blue"
+          className="btn-neon w-full text-[10px] font-bold tracking-widest uppercase py-3 shadow-glow-v"
         >
           Execute All Protocol Analysis
         </button>

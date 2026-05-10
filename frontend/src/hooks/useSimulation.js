@@ -24,6 +24,7 @@ export default function useSimulation() {
     await api.setProtocol(name);
     store.setProtocol(name);
     store.resetState();
+    store.setBottomTab('log');
   }, []);
 
   const changeSpeed = useCallback(async (speed) => {

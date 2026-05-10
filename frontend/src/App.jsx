@@ -140,23 +140,8 @@ export default function App() {
           </div>
 
           {/* Bottom panel */}
-          <div
-            style={{ flexShrink:0, height:'auto', zIndex:2, position:'relative', borderTop:'1px solid var(--border-col)' }}
-            className="panel"
-          >
-            <div className="panel-header">
-              <div className="led led-cyan" />
-              <span className="panel-label">Data Stream</span>
-              <div style={{ marginLeft:'auto', display:'flex', gap:8 }}>
-                <span className="tag tag-violet">RIP</span>
-                <span className="tag tag-cyan">OSPF</span>
-                <span className="tag tag-pink">EIGRP</span>
-                <span className="tag tag-green">BGP</span>
-              </div>
-            </div>
-            <div style={{ padding:'8px', height:'calc(100% - 37px)', overflow:'hidden' }}>
-              <BottomPanel />
-            </div>
+          <div className="panel" style={{ flexShrink:0, zIndex:2, position:'relative', borderTop:'1px solid var(--border-col)', background:'var(--panel-bg)' }}>
+            <BottomPanel />
           </div>
         </div>
 
