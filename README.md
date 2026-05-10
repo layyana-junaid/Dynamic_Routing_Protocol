@@ -1,5 +1,7 @@
 # Dynamic Routing Protocol Simulator
 
+video demo link: https://www.loom.com/share/4b47818a329c4fee8de3f7fa5b44a0f3
+
 A full stack application that simulates and visualises **RIP**, **OSPF**, **EIGRP**, and **BGP** routing protocol behaviour on configurable network topologies.
 
 Built for a Computer Networks course project.
